@@ -1,13 +1,16 @@
 <%= form_for(task) do |f| %>
-  <% if message.errors.any? %>
+  <% if task.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% message.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% task.errors.full_tasks.each do |task| %>
+          <li><%= task %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  
+  <%= f.label :status, 'ステータス' %>
+  <%= select :task, :status, {'1.未着手':'未着手', '2.対応中':'対応中', '3.完了':'完了'} %>
   
   <%= f.label :content, 'タスク' %>
   <%= f.text_field :content %>
